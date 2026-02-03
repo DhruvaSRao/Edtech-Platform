@@ -39,7 +39,7 @@ Media Management: Cloudinary
 
 Hosting:
 Front-end → Vercel
-Back-end → Render/Railway
+Back-end → Render
 
 Database → MongoDB Atlas
 
@@ -52,7 +52,7 @@ Database:	MongoDB, Mongoose
 Authentication:	JWT, Bcrypt
 Media Handling:	Cloudinary
 Payments:	Razorpay Integration
-Deployment:	Vercel (frontend), Render/Railway (backend), MongoDB Atlas (database).
+Deployment:	Vercel (frontend), Render (backend), MongoDB Atlas (database).
 
 Structure of the Project:
 
