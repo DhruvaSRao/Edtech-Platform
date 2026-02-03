@@ -8,7 +8,7 @@ exports.createRating = async (req, res) => {
     const userId = req.user.id
     const { rating, review, courseId } = req.body
 
-    // Check if the user is enrolled in the course
+    
 
     const courseDetails = await Course.findOne({
       _id: courseId,
@@ -22,7 +22,7 @@ exports.createRating = async (req, res) => {
       })
     }
 
-    // Check if the user has already reviewed the course
+   
     const alreadyReviewed = await RatingAndReview.findOne({
       user: userId,
       course: courseId,
@@ -35,7 +35,7 @@ exports.createRating = async (req, res) => {
       })
     }
 
-    // Create a new rating and review
+    
     const ratingReview = await RatingAndReview.create({
       rating,
       review,
@@ -43,7 +43,7 @@ exports.createRating = async (req, res) => {
       user: userId,
     })
 
-    // Add the rating and review to the course
+    
     await Course.findByIdAndUpdate(courseId, {
       $push: {
         ratingAndReviews: ratingReview,
@@ -71,7 +71,7 @@ exports.getAverageRating = async (req, res) => {
   try {
     const courseId = req.body.courseId
 
-    // Calculate the average rating using the MongoDB aggregation pipeline
+    // Calculating the average rating using the MongoDB aggregation pipeline
     const result = await RatingAndReview.aggregate([
       {
         $match: {

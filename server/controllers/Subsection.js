@@ -1,16 +1,15 @@
-// Import necessary modules
 const Section = require("../models/Section")
 const SubSection = require("../models/Subsection")
 const { uploadImageToCloudinary } = require("../utils/imageUploader")
 
-// Create a new sub-section for a given section
+
 exports.createSubSection = async (req, res) => {
   try {
-    // Extract necessary information from the request body
+   
     const { sectionId, title, description } = req.body
     const video = req.files.video
 
-    // Check if all necessary fields are provided
+    
     if (!sectionId || !title || !description || !video) {
       return res
         .status(404)
@@ -39,10 +38,10 @@ exports.createSubSection = async (req, res) => {
       { new: true }
     ).populate("subSection")
 
-    // Return the updated section in the response
+   
     return res.status(200).json({ success: true, data: updatedSection })
   } catch (error) {
-    // Handle any errors that may occur during the process
+
     console.error("Error creating new sub-section:", error)
     return res.status(500).json({
       success: false,
@@ -83,7 +82,7 @@ exports.updateSubSection = async (req, res) => {
 
     await subSection.save()
 
-    // find updated section and return it
+    
     const updatedSection = await Section.findById(sectionId).populate(
       "subSection"
     )
@@ -123,7 +122,7 @@ exports.deleteSubSection = async (req, res) => {
         .json({ success: false, message: "SubSection not found" })
     }
 
-    // find updated section and return it
+    
     const updatedSection = await Section.findById(sectionId).populate(
       "subSection"
     )

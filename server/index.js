@@ -13,13 +13,10 @@ const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
-// Setting up port number
 const PORT = process.env.PORT || 4000;
 
-// Loading environment variables from .env file
 dotenv.config();
 
-// Connecting to database
 database.connect();
  
 // Middlewares
@@ -38,10 +35,8 @@ app.use(
 	})
 );
 
-// Connecting to cloudinary
 cloudinaryConnect();
 
-// Setting up routes
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
@@ -61,4 +56,3 @@ app.listen(PORT, () => {
 	console.log(`App is listening at ${PORT}`);
 });
 
-// End of code.

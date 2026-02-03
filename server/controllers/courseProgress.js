@@ -22,7 +22,7 @@ exports.updateCourseProgress = async (req, res) => {
     })
 
     if (!courseProgress) {
-      // If course progress doesn't exist, create a new one
+      
       return res.status(404).json({
         success: false,
         message: "Course progress Does Not Exist",
@@ -33,7 +33,7 @@ exports.updateCourseProgress = async (req, res) => {
         return res.status(400).json({ error: "Subsection already completed" })
       }
 
-      // Push the subsection into the completedVideos array
+      // Pushing the subsection into the completedVideos array
       courseProgress.completedVideos.push(subsectionId)
     }
 
@@ -46,6 +46,8 @@ exports.updateCourseProgress = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" })
   }
 }
+
+//future enhancement - To find perc
 
 // exports.getProgressPercentage = async (req, res) => {
 //   const { courseId } = req.body
